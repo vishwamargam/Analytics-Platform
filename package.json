@@ -1,0 +1,35 @@
+{
+  "name": "analytics-platform",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/browser-sdk", "packages/server-sdk", "restaurant-demo", "dashboard"],
+  "exports": {
+    "./browser-sdk": "./packages/browser-sdk/src/index.js",
+    "./server-sdk": "./packages/server-sdk/src/index.js"
+  },
+  "scripts": {
+    "start": "node server/src/index.js",
+    "dev": "node --watch server/src/index.js",
+    "dev:restaurant": "npm run dev --workspace restaurant-demo",
+    "dev:dashboard": "npm run dev --workspace dashboard",
+    "build:restaurant": "npm run build --workspace restaurant-demo",
+    "build:dashboard": "npm run build --workspace dashboard",
+    "test": "vitest run server/test packages/browser-sdk/test packages/server-sdk/test && npm run test --workspace restaurant-demo && npm run test --workspace dashboard",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.1.3",
+    "supertest": "^7.0.0",
+    "vitest": "^5.0.4"
+  }
+}

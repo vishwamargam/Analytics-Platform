@@ -1,0 +1,9 @@
+node_modules/
+# Keep local environment values out of source control; retain safe templates.
+.env
+.env.*
+!.env.example
+!**/.env.example
+coverage/
+dist/
+*.log
